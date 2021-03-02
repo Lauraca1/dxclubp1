@@ -107,6 +107,17 @@ let rain = []
  * function that was given to us by Cahil Foley.
  */
 
+/*
+ *TODO:
+ *  - color picker
+ *  - possible cypher easter egg?
+ *  - brush picker
+ *  - shape picker
+ *  - matrix rain background?
+ *  - testing
+ *  - documentation
+ */
+
 function setup() {
   canvas = createCanvas(window.innerWidth - 55, window.innerHeight - 195)
   //canvas.position(50, 100);
