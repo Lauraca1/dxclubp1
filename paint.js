@@ -118,7 +118,7 @@ let total = 80
 let rain = []
 
 function setup() {
-  createCanvas(window.innerWidth - 100, window.innerHeight - 250)
+  canvas = createCanvas(window.innerWidth - 55, window.innerHeight - 195)
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
@@ -140,13 +140,13 @@ function draw() {
 function sidebar(){
     // Sidebar
     noStroke();
-    fill(40)
+    fill(25)
     rect(0, 0, 100, window.innerHeight)
 
     // 
 }   
 
 function windowResized() {
-  resizeCanvas(window.innerWidth - 100, window.innerHeight - 250)
+  resizeCanvas(window.innerWidth - 55, window.innerHeight - 195)
 }
 
