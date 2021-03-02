@@ -131,6 +131,10 @@ function draw() {
   //rain.forEach(s => s.draw())
 }
 
+/*This function will be what represents the pallete
+ * in which the user will be able to change the color
+ * they're using, the paint brush, etc....
+ */
 function sidebar(){
     // Sidebar
     noStroke()
