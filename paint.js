@@ -1,29 +1,10 @@
-//The following code was written by Laura C., Diego G. and Salvador G.
-//for the final meeting of our club, the Digital Transformation Club(Dx Club)
 
-//The purpose of this code is to recreate MS Paint using the JavaScript library
-//P5.js
+/*The following code was grabbed from codepen.io and was written by
+ *Cahil Foley in response to a video about Matrix Rain Video uploaded
+ *to Youtube by "The Coding Train" channel
+ *LINK TO THE VIDEO: https://www.youtube.com/watch?v=S1TQCi9axzg
+ */
 
-/*
-function setup(){
-    createCanvas(1100, 700);
-    background(255);
-    noStroke();
-}
- 
-function draw(){ 
-
-    // Sidebar
-    fill(40);
-    rect(0, 0, 100, 700);
-}
-*/
-
-
-
-//The following code was grabbed from codepen.io and was written by
-//Cahil Foley in response to a video about Matrix Rain Video uploaded
-//to Youtube by "The Coding Train" channel
 class Letter {
   constructor(x, y, d) {
     this.char = Letter.getChar()
@@ -116,6 +97,15 @@ class Stream {
 
 let total = 80
 let rain = []
+
+/* The following code was written by Laura C., Diego G. and Salvador G.
+ * for the final meeting of our club, the Digital Transformation Club(Dx Club)
+ * which takes/took place on March 3rd 2021 at 6pm PST.
+
+ * The purpose of this code is to recreate MS Paint using the JavaScript library P5.js
+ * The code located underneath this comment block is a modified version of the draw/setup
+ * function that was given to us by Cahil Foley.
+ */
 
 function setup() {
   canvas = createCanvas(window.innerWidth - 55, window.innerHeight - 195)
