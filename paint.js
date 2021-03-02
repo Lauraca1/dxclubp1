@@ -108,7 +108,7 @@ let rain = []
  */
 
 function setup() {
-  createCanvas(window.innerWidth - 100, window.innerHeight - 250)
+  canvas = createCanvas(window.innerWidth - 55, window.innerHeight - 195)
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
@@ -119,6 +119,10 @@ function setup() {
   //   rain.push(new Stream(i, random(1, height), random(2, 10)))
   // }
 }
+//global color variables
+var r = 0;
+var g = 0;
+var b = 0;
 
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
@@ -130,13 +134,18 @@ function draw() {
 function sidebar(){
     // Sidebar
     noStroke();
+<<<<<<< HEAD
     fill(40)
-    rect(0, 0, 100, window.innerHeight)
+    rect(0, 0, 120, window.innerHeight)
+=======
+    fill(25)
+    rect(0, 0, 120, window.innerHeight)
+>>>>>>> 4b3168b506f184ddf7d6b4d9a4badb2531bb9077
 
     // 
 }   
 
 function windowResized() {
-  resizeCanvas(window.innerWidth - 100, window.innerHeight - 250)
+  resizeCanvas(window.innerWidth - 55, window.innerHeight - 195)
 }
 
