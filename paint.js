@@ -1,3 +1,4 @@
+// Sal is here BABY
 var kidScale = .63;
 var xKid = 1050;
 var yKid = 650;
