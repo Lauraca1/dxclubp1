@@ -109,17 +109,40 @@ let rain = []
 
 /*
  *TODO:
- *  - color picker
- *  - possible cypher easter egg?
- *  - brush picker
- *  - shape picker
+ *  - color picker - Laura
+ *  - possible cypher easter egg? - Diego
+ *  - brush picker - Sal
+ *  - shape picker - Sal
  *  - matrix rain background?
  *  - testing
  *  - documentation
  */
 
+// GLOBAL VARIABLES
+
+var r = 0;
+var g = 0;
+var b = 0;
+var currentBrush = 'square';
+var currentStroke = 100;
+var buttons = []; // Used for buttons and other interactions
+var canvas;
+var shapes = [];
+
 function setup() {
-  canvas = createCanvas(window.innerWidth - 55, window.innerHeight - 195)
+  createCanvas(window.innerWidth - 55, window.innerHeight - 195)
+  buttons.push(new Hitbox(25, 100, 60, 60, 'square'));
+  buttons.push(new Hitbox(25, 200, 60, 60, 'circle'));
+  buttons.push(new Hitbox(25, 300, 60, 60, 'pencil'));
+  buttons.push(new Hitbox(25, 400, 60, 60, 'special'));
+
+  for(var i = 0; i < buttons.length; i++){
+    buttons[i].active = true; // set all hitboxes active
+  }
+  //[3].active = false; // False for the special button until deciphered
+
+  canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
+
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
@@ -130,17 +153,14 @@ function setup() {
   //   rain.push(new Stream(i, random(1, height), random(2, 10)))
   // }
 }
-//global color variables
-var r = 0;
-var g = 0;
-var b = 0;
-var currentBrush = "Brush"
-var currentStroke = 0
 
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
-    background(255)
-    sidebar()
+    background(255);
+    sidebar();
+    for(var i = 0; i < shapes.length; i++){
+      shapes[i].draw();
+    }
   //rain.forEach(s => s.draw())
 }
 
@@ -150,24 +170,118 @@ function draw() {
  */
 function sidebar(){
     // Sidebar
-    noStroke()
-    fill(0) // change to 25
-    rect(0, 0, 100, window.innerHeight)
+  noStroke();
+  fill(25); // change 25
+  rect(0, 0, 120, window.innerHeight);
 
+  // Brushes
+
+  // Square
+  stroke(100);
+  fill(50);
+  rect(25, 100, 60, 60);
+  fill(255);
+  rect(42.5, 117.5, 25, 25);
+
+  // Circle
+  stroke(100);
+  fill(50);
+  rect(25, 200, 60, 60);
+  fill(255);
+  ellipse(55, 230, 30);
+
+  // Pencil
+  stroke(100);
+  fill(50);
+  rect(25, 300, 60, 60)   ;
+  
+  // special brush
+  stroke(100);
+  fill(50);
+  rect(25, 400, 60, 60);
+
+}
+
+function mousePressed(){
+
+  // Check if a brush button was pressed
+  for(var i = 0; i < buttons.length; i++){
+    if(buttons[i].check(mouseX, mouseY)){
+      currentBrush = buttons[i].id;
+      console.log("Current brush: " + currentBrush);
+    }
+  }
+
+  if(canvas.check(mouseX, mouseY)){
+    console.log("Draw to the canvas!");
+    if(currentBrush == 'square'){ // Add a square to the canvas
+      console.log("Square added");
+      shapes.push(new Square(mouseX - (currentStroke / 2), mouseY - (currentStroke / 2), currentStroke, [255, 0, 0]));
+    } else if(currentBrush == 'circle'){ // add a circle to the canvas
+      console.log("Circle added");
+      shapes.push(new Circle(mouseX, mouseY, currentStroke, [0, 255, 0]))
+    }
+  }
+}
+
+class Hitbox{
+  //ox and oy are the coords for the top left corner of the thing you want the hitbox over
+  constructor(ox, oy, w, h, id){
+    this.x = ox; // x top corner
+    this.y = oy; // y top corner
+    this.w = w; // width
+    this.h = h; // height
+    this.id = id; // Used for identifying a hitbox
+    this.active = true; // To disable a hitbox set active to false
+  }
+
+  update(){ // Use if you need to move the hitbox somewhere else during runtime
+    this.x += hx;
+    this.y += hy;
+    fill(255, 0, 0, 100);
+  }
+
+  check(mX, mY){ //This will return true or false if mouse was clicked on top of the hitbox
+    if(mX >= this.x && mX <= this.x + this.w && mY >= this.y && mY <= this.y + this.h && this.active)
+        return true;
+    else
+        return false;
+  }
+}
+
+class Square{
+  constructor(ox, oy, size, color){
+    this.x = ox;
+    this.y = oy;
+    this.r = color[0];
+    this.g = color[1];
+    this.b = color[2];
+    this.size = size;
+  }
+
+  draw(){
     noStroke();
+    fill(this.r, this.g, this.b);
+    rect(this.x, this.y, this.size, this.size);
+  }
+}
 
-    fill(40)
-    rect(0, 0, 120, window.innerHeight)
+class Circle{
+  constructor(ox, oy, size, color){
+    this.x = ox;
+    this.y = oy;
+    this.r = color[0];
+    this.g = color[1];
+    this.b = color[2];
+    this.size = size;
+  }
 
-    fill(25)
-    rect(0, 0, 120, window.innerHeight)
-
-    // Brushes
-    stroke(100)
-    fill(50)
-    rect(25, 100, 60, 60)
-    fill(255)
-}   
+  draw(){
+    noStroke();
+    fill(this.r, this.g, this.b);
+    ellipse(this.x, this.y, this.size);
+  }
+}
 
 function windowResized() {
   resizeCanvas(window.innerWidth - 55, window.innerHeight - 195)
