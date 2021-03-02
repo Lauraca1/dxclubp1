@@ -123,6 +123,8 @@ function setup() {
 var r = 0;
 var g = 0;
 var b = 0;
+var currentBrush = "Brush"
+var currentStroke = 0
 
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
@@ -149,11 +151,10 @@ function sidebar(){
     fill(25)
     rect(0, 0, 120, window.innerHeight)
 
-
     // Brushes
     stroke(100)
     fill(50)
-    rect(20, 100, 60, 60)
+    rect(25, 100, 60, 60)
     fill(255)
 }   
 
