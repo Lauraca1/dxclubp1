@@ -139,11 +139,15 @@ function draw() {
 
 function sidebar(){
     // Sidebar
-    noStroke();
-    fill(25)
+    noStroke()
+    fill(0) // change to 25
     rect(0, 0, 100, window.innerHeight)
 
-    // 
+    // Brushes
+    stroke(100)
+    fill(50)
+    rect(20, 100, 60, 60)
+    fill(255)
 }   
 
 function windowResized() {
