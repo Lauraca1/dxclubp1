@@ -129,6 +129,10 @@ function setup() {
   //   rain.push(new Stream(i, random(1, height), random(2, 10)))
   // }
 }
+//global color variables
+var r = 0;
+var g = 0;
+var b = 0;
 
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
@@ -141,7 +145,7 @@ function sidebar(){
     // Sidebar
     noStroke();
     fill(40)
-    rect(0, 0, 100, window.innerHeight)
+    rect(0, 0, 120, window.innerHeight)
 
     // 
 }   
