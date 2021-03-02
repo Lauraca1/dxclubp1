@@ -118,23 +118,35 @@ let total = 80
 let rain = []
 
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight)
-
-  noStroke()
-  textStyle(BOLD)
+  createCanvas(window.innerWidth - 100, window.innerHeight - 250)
+  //canvas.position(50, 100);
+  //canvas.position(10, 10, 'fixed')
+  //noStroke()
+  //textStyle(BOLD)
 
   // Create streams
-  for (let i = 0; i < total; i++) {
-    rain.push(new Stream(i, random(1, height), random(2, 10)))
-  }
+  // for (let i = 0; i < total; i++) {
+  //   rain.push(new Stream(i, random(1, height), random(2, 10)))
+  // }
 }
 
 function draw() {
-  background(0)
-  rain.forEach(s => s.draw())
+    //resizeCanvas(window.innerWidth, window.innerHeight)
+    background(255)
+    sidebar()
+  //rain.forEach(s => s.draw())
 }
 
+function sidebar(){
+    // Sidebar
+    noStroke();
+    fill(40)
+    rect(0, 0, 100, window.innerHeight)
+
+    // 
+}   
+
 function windowResized() {
-  resizeCanvas(window.innerWidth, window.innerHeight)
+  resizeCanvas(window.innerWidth - 100, window.innerHeight - 250)
 }
 
