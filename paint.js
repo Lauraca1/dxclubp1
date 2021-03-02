@@ -149,7 +149,7 @@ function sidebar(){
     rect(0, 0, 120, window.innerHeight)
 =======
     fill(25)
-    rect(0, 0, 100, window.innerHeight)
+    rect(0, 0, 120, window.innerHeight)
 >>>>>>> 4b3168b506f184ddf7d6b4d9a4badb2531bb9077
 
     // 
