@@ -146,6 +146,15 @@ var easterEggInput;
 var easterEggBool;
 
 function setup() {
+  //EasterEgg setup
+  //easterEggString = createP("What is the code?")
+  easterEggString = createDiv("What is the code?")
+  easterEggString.position(220,180);
+  easterEggInput = createInput('');
+  easterEggInput.position(220, 200);
+  easterEggInput.changed(redPill);
+ // createP('');
+  
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
   bWidth = 60;
   bHeight = window.innerHeight / 20;
