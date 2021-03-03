@@ -94,7 +94,7 @@ class Stream {
   }
 }
 
-let total = 150
+let total = 100
 let rain = []
 
 /* The following code was written by Laura C., Diego G. and Salvador G.
