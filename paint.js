@@ -129,13 +129,14 @@ var currentStroke = 100;
 var buttons = []; // Used for buttons and other interactions
 var canvas;
 var shapes = [];
-//var input;
 
 // Variables for buttons
 var bps = [25, 125, 225, 325];
 var bWidth = 60;
 var bHeight = 60;
 var padding = 10;
+
+var input;
 
 function setup() {
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
@@ -154,8 +155,8 @@ function setup() {
 
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
-  //createP('');
-  //input = createInput('');
+  createP('');
+  input = createInput('');
   
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
@@ -179,8 +180,7 @@ function draw() {
     sidebar();
     colorPicker(10,410);
 
-    //fill(0);
-    //text(input.value(), 500, 500);
+    text(input.value(), 500, 500); 
   
   //rain.forEach(s => s.draw())
 }
