@@ -136,7 +136,9 @@ var bWidth = 60;
 var bHeight = 60;
 var padding = 10;
 
-var input;
+var easterEggString;
+var easterEggInput;
+var easterEggBool;
 
 function setup() {
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
@@ -155,18 +157,25 @@ function setup() {
 
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
-  createP('');
-  input = createInput('');
+  easterEggString = createP("What is the code?")
+  easterEggInput = createInput('');
+  easterEggInput.changed(redPill);
   
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
   //textStyle(BOLD)
 
-  // Create streams
-  // for (let i = 0; i < total; i++) {
-  //   rain.push(new Stream(i, random(1, height), random(2, 10)))
-  // }
+    for (let i = 0; i < total; i++) {
+    rain.push(new Stream(i, random(1, height), random(2, 10)))
+    }
+}
+
+function redPill(){
+  if(easterEggInput.value() === "I would like to take the red pill"){ 
+    easterEggString.html("NOW EXITING THE MARTRIX!!!!");
+    easterEggBool = true;
+ }
 }
 
 //please
@@ -180,18 +189,18 @@ function draw() {
     sidebar();
     colorPicker(10,410);
 
-    text(input.value(), 500, 500); 
-  
-  //rain.forEach(s => s.draw())
-}
+    if(easterEggBool == true){
+      rain.forEach(s => s.draw())
+    }
+  }
 
-function resH(num){
-  return num / window.innerHeight;
-}
+  function resH(num){
+    return num / window.innerHeight;
+  }
 
-function resW(num){
-  return num / window.innerWidth;
-}
+  function resW(num){
+    return num / window.innerWidth;
+  }
 
 /*This function will be what represents the pallete
  * in which the user will be able to change the color
@@ -285,17 +294,17 @@ function colorPicker(x,y){
     }
   }
 
-function sizePicker(x, y){
-  fill(0);
-  rect(x, y, 100, 150);
-  textSize(18);
-  fill(255);
-  textAlign(CENTER);
-  textStyle(BOLD);
-  textFont("Comic Sans MS");
-  text("Stroke Size", x, y);
+  function sizePicker(x, y){
+    fill(0);
+    rect(x, y, 100, 150);
+    textSize(18);
+    fill(255);
+    textAlign(CENTER);
+    textStyle(BOLD);
+    textFont("Comic Sans MS");
+    text("Stroke Size", x, y);
 
-}
+  }
 
   function mousePressed(){
 
