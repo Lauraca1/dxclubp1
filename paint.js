@@ -178,15 +178,11 @@ function setup() {
   //EasterEgg setup pt.2
   for (let i = 0; i < total; i++) {
     rain.push(new Stream(i, random(1, height), random(2, 10)))
-<<<<<<< HEAD
     }
 
     slidyboi(16,375, 1,100);
 
-=======
   }
->>>>>>> 54ac08da0ad23d28aee3dee4fac91695e016602d
-}
 
 //Function that will start the easter Egg
 function redPill(){
