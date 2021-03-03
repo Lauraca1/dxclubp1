@@ -94,7 +94,7 @@ class Stream {
   }
 }
 
-let total = 80
+let total = 150
 let rain = []
 
 /* The following code was written by Laura C., Diego G. and Salvador G.
@@ -171,14 +171,19 @@ function setup() {
     }
 }
 
+//Function that will start the easter Egg
 function redPill(){
+  //Case where the cypher is correct
   if(easterEggInput.value() === "I would like to take the red pill"){ 
     easterEggString.html("NOW EXITING THE MARTRIX!!!!");
     easterEggBool = true;
- }
+  }
+  //Case where the cypher is wrong
+  else{
+    easterEggString.html("Nope, that is not the cypher! Try again!");
+    easterEggBool = false;
+  }
 }
-
-//please
 
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
@@ -189,6 +194,7 @@ function draw() {
     sidebar();
     colorPicker(10,410);
 
+    //If the easter egg is triggered, then it's time to break out!
     if(easterEggBool == true){
       rain.forEach(s => s.draw())
     }
