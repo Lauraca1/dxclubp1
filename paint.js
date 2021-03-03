@@ -160,11 +160,11 @@ function setup() {
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
     background(255);
-    sidebar();
-    colorPicker(10,20);
     for(var i = 0; i < shapes.length; i++){
       shapes[i].draw();
     }
+    sidebar();
+    colorPicker(10,20);
   //rain.forEach(s => s.draw())
 }
 
