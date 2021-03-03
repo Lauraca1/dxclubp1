@@ -124,6 +124,7 @@ var b = 0;
 var cx =10;
 var tx =10;
 var sx =10;
+let slider;
 var currentBrush = 'square';
 var currentStroke = 100;
 var buttons = []; // Used for buttons and other interactions
@@ -183,8 +184,11 @@ function setup() {
   //EasterEgg setup pt.2
   for (let i = 0; i < total; i++) {
     rain.push(new Stream(i, random(1, height), random(2, 10)))
+    }
+
+    slidyboi(16,375, 1,100);
+
   }
-}
 
 //Function that will start the easter Egg
 function redPill(){
@@ -201,13 +205,14 @@ function redPill(){
 }
 
 function draw() {
-  //resizeCanvas(window.innerWidth, window.innerHeight)
-  background(255);
-  for(var i = 0; i < shapes.length; i++){
-    shapes[i].draw();
-  }
-  sidebar();
-  colorPicker(10,410);
+    //resizeCanvas(window.innerWidth, window.innerHeight)
+    background(255);
+    for(var i = 0; i < shapes.length; i++){
+      shapes[i].draw();
+    }
+    sidebar();
+    colorPicker(10,410);
+    currentStroke = slider.value();
 
   //If the easter egg is triggered, then it's time to break out!
   if(easterEggBool == true){
@@ -314,6 +319,12 @@ function colorPicker(x,y){
         b = (255/100) * (sx-10);
       }
     }
+  }
+
+  function slidyboi(x,y,minVal,maxVal){
+  slider = createSlider(minVal, maxVal, maxVal/2, 0);
+  slider.position(x, y);
+  slider.style('width', '80px');
   }
 
   function sizePicker(x, y){
