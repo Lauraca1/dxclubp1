@@ -154,10 +154,17 @@ function setup() {
   for(var i = 0; i < buttons.length; i++){
     buttons[i].active = true; // set all hitboxes active
   }
-  //[3].active = false; // False for the special button until deciphered
 
+  //[3].active = false; // False for the special button until deciphered
+  // vvvvvvvvvvvvvvvvvvvvvvvv
+
+  /*if(easterEggBool == true){
+    [3].active = true;
+  }
+  */
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
+  //EasterEgg setup
   easterEggString = createP("What is the code?")
   easterEggInput = createInput('');
   easterEggInput.changed(redPill);
@@ -167,12 +174,18 @@ function setup() {
   //noStroke()
   //textStyle(BOLD)
 
-    for (let i = 0; i < total; i++) {
+  //Cdde to get the matrix rain stream loaded
+  //EasterEgg setup pt.2
+  for (let i = 0; i < total; i++) {
     rain.push(new Stream(i, random(1, height), random(2, 10)))
+<<<<<<< HEAD
     }
 
     slidyboi(16,375, 1,100);
 
+=======
+  }
+>>>>>>> 54ac08da0ad23d28aee3dee4fac91695e016602d
 }
 
 //Function that will start the easter Egg
