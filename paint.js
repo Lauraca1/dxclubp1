@@ -272,6 +272,9 @@ function sidebar(){
   stroke(100);
   fill(50);
   rect(25, bps[3], bWidth, bHeight);
+  noStroke();
+  fill(245, 150, 200);
+  rect(35.5, bps[3] + 12.5, 40, 25); // eraser icon
 }
 
 function pIcon(x,y){
