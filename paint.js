@@ -140,6 +140,7 @@ var padding = 10;
 
 // Variables for pencil brush
 var marks = [];
+var erasers = [];
 
 var easterEggString;
 var easterEggInput;
@@ -164,13 +165,11 @@ function setup() {
   buttons.push(new Hitbox(25, bps[0], bWidth, bHeight, 'square'));
   buttons.push(new Hitbox(25, bps[1], bWidth, bHeight, 'circle'));
   buttons.push(new Hitbox(25, bps[2], bWidth, bHeight, 'pencil'));
-  buttons.push(new Hitbox(25, bps[3], bWidth, bHeight, 'special'));
+  buttons.push(new Hitbox(25, bps[3], bWidth, bHeight, 'eraser'));
 
   for(var i = 0; i < buttons.length; i++){
     buttons[i].active = true; // set all hitboxes active
   }
-
-  [3].active = false; // False for the special button until deciphered
   // vvvvvvvvvvvvvvvvvvvvvvvv
 
   if(easterEggBool == true){
@@ -220,6 +219,10 @@ function draw() {
 
   currentStroke = slider.value();
 
+  if(mouseIsPressed && currentBrush == 'eraser' && canvas.check(mouseX, mouseY)){
+    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [255, 255, 255], (currentStroke / 2)));
+  }
+
   if(mouseIsPressed && currentBrush == 'pencil' && canvas.check(mouseX, mouseY)){
     marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [r, g, b], (currentStroke / 2)));
   }
@@ -227,6 +230,7 @@ function draw() {
   for(var i = 0; i < marks.length; i++){
     marks[i].drawPencil();
   }
+
   sidebar();
   colorPicker(10,380);
 
