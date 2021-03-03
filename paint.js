@@ -149,9 +149,9 @@ function setup() {
   //EasterEgg setup
   //easterEggString = createP("What is the code?")
   easterEggString = createDiv("What is the code?")
-  easterEggString.position(220,180);
+  easterEggString.position(120,192);
   easterEggInput = createInput('');
-  easterEggInput.position(220, 200);
+  easterEggInput.position(120, 212);
   easterEggInput.changed(redPill);
  // createP('');
   
