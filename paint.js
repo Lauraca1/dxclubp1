@@ -161,7 +161,7 @@ function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
     background(255);
     sidebar();
-    //colorPicker(10,20);
+    colorPicker(10,20);
     for(var i = 0; i < shapes.length; i++){
       shapes[i].draw();
     }
