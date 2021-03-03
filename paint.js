@@ -128,6 +128,8 @@ var currentStroke = 100;
 var buttons = []; // Used for buttons and other interactions
 var canvas;
 var shapes = [];
+var deciphered = true;
+var pencilDrawing = false;
 
 function setup() {
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
@@ -142,7 +144,7 @@ function setup() {
   //[3].active = false; // False for the special button until deciphered
 
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
-
+  frameRate(120);
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
@@ -160,6 +162,9 @@ function draw() {
     sidebar();
     for(var i = 0; i < shapes.length; i++){
       shapes[i].draw();
+    }
+    if(pencilDrawing){
+      shapes.push(new Pencil(mouseX, mouseY));
     }
   //rain.forEach(s => s.draw())
 }
@@ -196,9 +201,12 @@ function sidebar(){
   rect(25, 300, 60, 60)   ;
   
   // special brush
-  stroke(100);
-  fill(50);
-  rect(25, 400, 60, 60);
+  if(deciphered){
+    stroke(100);
+    fill(50);
+    rect(25, 400, 60, 60);
+  }
+  
 
 }
 
@@ -216,10 +224,12 @@ function mousePressed(){
     console.log("Draw to the canvas!");
     if(currentBrush == 'square'){ // Add a square to the canvas
       console.log("Square added");
-      shapes.push(new Square(mouseX - (currentStroke / 2), mouseY - (currentStroke / 2), currentStroke, [255, 0, 0]));
+      shapes.push(new Square(mouseX - (currentStroke / 2), mouseY - (currentStroke / 2), currentStroke));
     } else if(currentBrush == 'circle'){ // add a circle to the canvas
       console.log("Circle added");
-      shapes.push(new Circle(mouseX, mouseY, currentStroke, [0, 255, 0]))
+      shapes.push(new Circle(mouseX, mouseY, currentStroke))
+    } else if(currentBrush == 'pencil'){
+      pencilDrawing = true;
     }
   }
 }
@@ -249,37 +259,47 @@ class Hitbox{
   }
 }
 
+function mouseReleased() {
+  pencilDrawing = false;
+}
+
 class Square{
-  constructor(ox, oy, size, color){
+  constructor(ox, oy, size){
     this.x = ox;
     this.y = oy;
-    this.r = color[0];
-    this.g = color[1];
-    this.b = color[2];
     this.size = size;
   }
 
   draw(){
     noStroke();
-    fill(this.r, this.g, this.b);
-    rect(this.x, this.y, this.size, this.size);
+    fill(r, g, b);
+    rect(this.x, this.y, currentStroke, currentStroke);
   }
 }
 
 class Circle{
-  constructor(ox, oy, size, color){
+  constructor(ox, oy, size){
     this.x = ox;
     this.y = oy;
-    this.r = color[0];
-    this.g = color[1];
-    this.b = color[2];
     this.size = size;
   }
 
   draw(){
     noStroke();
-    fill(this.r, this.g, this.b);
-    ellipse(this.x, this.y, this.size);
+    fill(r, g, b);
+    ellipse(this.x, this.y, currentStroke);
+  }
+}
+
+class Pencil{ // Could also use the Circle class to draw instead of Pencil
+  constructor(ox, oy){
+    this.x = ox;
+    this.y = oy;
+  }
+
+  draw(){
+    fill(r, g, b);
+    line(mouseY, mouseY, pmouseX, pmouseY)
   }
 }
 
