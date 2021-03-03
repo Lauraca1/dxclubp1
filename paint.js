@@ -272,6 +272,8 @@ function sidebar(){
   stroke(100);
   fill(50);
   rect(25, bps[2], bWidth, bHeight);
+  noStroke();
+  pIcon(37, bps[2] -85);
   
   // special brush
   stroke(100);
