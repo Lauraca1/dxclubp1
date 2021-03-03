@@ -94,7 +94,7 @@ class Stream {
   }
 }
 
-let total = 100
+let total = 55;
 let rain = []
 
 /* The following code was written by Laura C., Diego G. and Salvador G.
@@ -146,6 +146,12 @@ var easterEggInput;
 var easterEggBool;
 
 function setup() {
+  //EasterEgg setup
+  easterEggString = createP("What is the code?")
+  easterEggInput = createInput('');
+  easterEggInput.changed(redPill);
+  createP('');
+  
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
   bWidth = 60;
   bHeight = window.innerHeight / 20;
@@ -169,11 +175,6 @@ function setup() {
   }
   
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
-
-  //EasterEgg setup
-  easterEggString = createP("What is the code?")
-  easterEggInput = createInput('');
-  easterEggInput.changed(redPill);
   
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
@@ -223,7 +224,11 @@ function draw() {
 
   //If the easter egg is triggered, then it's time to break out!
   if(easterEggBool == true){
-    rain.forEach(s => s.draw())
+    strokeWeight(7.5);
+    //Matrix green!
+    fill(3,160, 98);
+    stroke(3,160,98);
+    rain.forEach(s => s.draw());
   }
 }
 
@@ -245,7 +250,7 @@ function sidebar(){
   rect(25, bps[0], bWidth, bHeight);
   noStroke();
   fill(r, g, b);
-  rect(42.5, bps[0] + 17.5, 25, 25);
+  rect(42.5, bps[0] + 10.5, 25, 25);
 
   // Circle
   stroke(100);
@@ -253,7 +258,7 @@ function sidebar(){
   rect(25, bps[1], bWidth, bHeight);
   noStroke();
   fill(r, g, b);
-  ellipse(55, bps[1] + 30, 30);
+  ellipse(55, bps[1] + 21, 30);
 
   // Pencil
   stroke(100);
