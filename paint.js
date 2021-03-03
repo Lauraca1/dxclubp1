@@ -94,7 +94,7 @@ class Stream {
   }
 }
 
-let total = 80
+let total = 150
 let rain = []
 
 /* The following code was written by Laura C., Diego G. and Salvador G.
@@ -137,6 +137,10 @@ var bWidth = 60;
 var bHeight = 60;
 var padding = 10;
 
+var easterEggString;
+var easterEggInput;
+var easterEggBool;
+
 function setup() {
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
   bWidth = 60;
@@ -151,25 +155,46 @@ function setup() {
   for(var i = 0; i < buttons.length; i++){
     buttons[i].active = true; // set all hitboxes active
   }
-  //[3].active = false; // False for the special button until deciphered
 
+  //[3].active = false; // False for the special button until deciphered
+  // vvvvvvvvvvvvvvvvvvvvvvvv
+
+  /*if(easterEggBool == true){
+    [3].active = true;
+  }
+  */
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
-  createP('');
-  input = createInput('');
+  //EasterEgg setup
+  easterEggString = createP("What is the code?")
+  easterEggInput = createInput('');
+  easterEggInput.changed(redPill);
   
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
   //textStyle(BOLD)
 
-  // Create streams
-  // for (let i = 0; i < total; i++) {
-  //   rain.push(new Stream(i, random(1, height), random(2, 10)))
-  // }
+  //Cdde to get the matrix rain stream loaded
+  //EasterEgg setup pt.2
+  for (let i = 0; i < total; i++) {
+    rain.push(new Stream(i, random(1, height), random(2, 10)))
+  }
 }
 
-//please
+//Function that will start the easter Egg
+function redPill(){
+  //Case where the cypher is correct
+  if(easterEggInput.value() === "I would like to take the red pill"){ 
+    easterEggString.html("NOW EXITING THE MARTRIX!!!!");
+    easterEggBool = true;
+  }
+  //Case where the cypher is wrong
+  else{
+    easterEggString.html("Nope, that is not the cypher! Try again!");
+    easterEggBool = false;
+  }
+}
 
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
@@ -180,19 +205,19 @@ function draw() {
     sidebar();
     colorPicker(10,410);
 
-    fill(0);
-    text(input.value(), 500, 500);
-  
-  //rain.forEach(s => s.draw())
-}
+    //If the easter egg is triggered, then it's time to break out!
+    if(easterEggBool == true){
+      rain.forEach(s => s.draw())
+    }
+  }
 
-function resH(num){
-  return num / window.innerHeight;
-}
+  function resH(num){
+    return num / window.innerHeight;
+  }
 
-function resW(num){
-  return num / window.innerWidth;
-}
+  function resW(num){
+    return num / window.innerWidth;
+  }
 
 /*This function will be what represents the pallete
  * in which the user will be able to change the color
@@ -286,17 +311,17 @@ function colorPicker(x,y){
     }
   }
 
-function sizePicker(x, y){
-  fill(0);
-  rect(x, y, 100, 150);
-  textSize(18);
-  fill(255);
-  textAlign(CENTER);
-  textStyle(BOLD);
-  textFont("Comic Sans MS");
-  text("Stroke Size", x, y);
+  function sizePicker(x, y){
+    fill(0);
+    rect(x, y, 100, 150);
+    textSize(18);
+    fill(255);
+    textAlign(CENTER);
+    textStyle(BOLD);
+    textFont("Comic Sans MS");
+    text("Stroke Size", x, y);
 
-}
+  }
 
   function mousePressed(){
 
