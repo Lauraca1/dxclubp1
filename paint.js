@@ -273,7 +273,7 @@ function mousePressed(){
     console.log("Draw to the canvas!");
     if(currentBrush == 'square'){ // Add a square to the canvas
       console.log("Square added");
-      shapes.push(new Square(mouseX - (currentStroke / 2), mouseY - (currentStroke / 2), currentStroke, [255, 0, 0]));
+      shapes.push(new Square(mouseX - (currentStroke / 2), mouseY - (currentStroke / 2), currentStroke, [r,g,b]));
     } else if(currentBrush == 'circle'){ // add a circle to the canvas
       console.log("Circle added");
       shapes.push(new Circle(mouseX, mouseY, currentStroke, [0, 255, 0]))
