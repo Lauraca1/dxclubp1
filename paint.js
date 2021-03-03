@@ -186,6 +186,7 @@ function sidebar(){
   stroke(100);
   fill(50);
   rect(25, bps[0], 60, 60);
+  noStroke();
   fill(r, g, b);
   rect(42.5, bps[0] + 17.5, 25, 25);
 
@@ -193,6 +194,7 @@ function sidebar(){
   stroke(100);
   fill(50);
   rect(25, bps[1], 60, 60);
+  noStroke();
   fill(r, g, b);
   ellipse(55, bps[1] + 30, 30);
 
@@ -260,7 +262,17 @@ function colorPicker(x,y){
     }
 }
 
-function sizePicker(x, y){}
+function sizePicker(x, y){
+  fill(0);
+  rect(x, y, 100, 150);
+  textSize(18);
+  fill(255);
+  textAlign(CENTER);
+  textStyle(BOLD);
+  textFont("Comic Sans MS");
+  text("Stroke Size", x, y);
+
+}
 
 function mousePressed(){
 
