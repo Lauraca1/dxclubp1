@@ -137,6 +137,9 @@ var bWidth = 60;
 var bHeight = 60;
 var padding = 10;
 
+// Variables for pencil brush
+var marks = [];
+
 var easterEggString;
 var easterEggInput;
 var easterEggBool;
@@ -145,6 +148,7 @@ function setup() {
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
   bWidth = 60;
   bHeight = window.innerHeight / 20;
+
 
   console.log("Button size: " + bWidth);
   buttons.push(new Hitbox(25, bps[0], bWidth, bHeight, 'square'));
@@ -156,13 +160,13 @@ function setup() {
     buttons[i].active = true; // set all hitboxes active
   }
 
-  //[3].active = false; // False for the special button until deciphered
+  [3].active = false; // False for the special button until deciphered
   // vvvvvvvvvvvvvvvvvvvvvvvv
 
-  /*if(easterEggBool == true){
+  if(easterEggBool == true){
     [3].active = true;
   }
-  */
+  
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
   //EasterEgg setup
@@ -197,27 +201,28 @@ function redPill(){
 }
 
 function draw() {
-    //resizeCanvas(window.innerWidth, window.innerHeight)
-    background(255);
-    for(var i = 0; i < shapes.length; i++){
-      shapes[i].draw();
-    }
-    sidebar();
-    colorPicker(10,410);
+  //resizeCanvas(window.innerWidth, window.innerHeight)
+  background(255);
+  for(var i = 0; i < shapes.length; i++){
+    shapes[i].draw();
+  }
+  sidebar();
+  colorPicker(10,410);
 
-    //If the easter egg is triggered, then it's time to break out!
-    if(easterEggBool == true){
-      rain.forEach(s => s.draw())
-    }
+  //If the easter egg is triggered, then it's time to break out!
+  if(easterEggBool == true){
+    rain.forEach(s => s.draw())
   }
 
-  function resH(num){
-    return num / window.innerHeight;
+  if(mouseIsPressed && currentBrush == "pencil"){
+    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY));
   }
 
-  function resW(num){
-    return num / window.innerWidth;
+  for(var i = 0; i < marks.length; i++){
+    strokeWeight(2);
+    line(marks[i].x, marks[i].y, marks[i].px, marks[i].py);
   }
+}
 
 /*This function will be what represents the pallete
  * in which the user will be able to change the color
@@ -401,6 +406,15 @@ class Circle{
     noStroke();
     fill(this.r, this.g, this.b);
     ellipse(this.x, this.y, this.size);
+  }
+}
+
+class Pencil{
+  constructor(x, y, px, py){
+    this.x = x;
+    this.y = y;
+    this.px = px;
+    this.py = py;
   }
 }
 
