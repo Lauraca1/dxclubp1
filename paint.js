@@ -209,17 +209,17 @@ function draw() {
     shapes[i].draw();
   }
 
-  sidebar();
-  colorPicker(10,380);
   currentStroke = slider.value();
 
   if(mouseIsPressed && currentBrush == 'pencil' && canvas.check(mouseX, mouseY)){
-    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [r, g, b], (currentStroke / 5)));
+    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [r, g, b], (currentStroke / 2)));
   }
   
   for(var i = 0; i < marks.length; i++){
     marks[i].drawPencil();
   }
+  sidebar();
+  colorPicker(10,380);
 
   //If the easter egg is triggered, then it's time to break out!
   if(easterEggBool == true){
