@@ -164,7 +164,7 @@ function draw() {
       shapes[i].draw();
     }
     sidebar();
-    colorPicker(10,380);
+    colorPicker(10,280);
   //rain.forEach(s => s.draw())
 }
 
