@@ -147,8 +147,8 @@ function setup() {
 
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
-  createP('');
-  input = createInput('');
+  //createP('');
+  //input = createInput('');
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
@@ -171,8 +171,8 @@ function draw() {
     sidebar();
     colorPicker(10,410);
 
-    fill(0);
-    text(input.value(), 500, 500);
+    //fill(0);
+    //text(input.value(), 500, 500);
   //rain.forEach(s => s.draw())
 }
 
