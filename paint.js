@@ -273,6 +273,8 @@ function sidebar(){
   stroke(100);
   fill(50);
   rect(25, bps[2], bWidth, bHeight);
+  noStroke();
+  pIcon(37, bps[2] -85);
   
   // special brush
   stroke(100);
@@ -281,11 +283,11 @@ function sidebar(){
 }
 
 function pIcon(x,y){
-    fill(255)
+    fill(230, 210, 180)
     triangle(x+1, y+95, x-13, y+105, x+1, y+115);
-    fill(255, 255, 0);
+    fill(r, g, b);
     rect(x+1, y+95, 35, 19.5)
-    fill(255)
+    fill(245, 150, 200)
     rect(x+36,y+95, 12,19.5)
   
 }
