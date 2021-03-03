@@ -1,4 +1,3 @@
-
 /*The following code was grabbed from codepen.io and was written by
  *Cahil Foley in response to a video about Matrix Rain Video uploaded
  *to Youtube by "The Coding Train" channel
@@ -101,7 +100,6 @@ let rain = []
 /* The following code was written by Laura C., Diego G. and Salvador G.
  * for the final meeting of our club, the Digital Transformation Club(Dx Club)
  * which takes/took place on March 3rd 2021 at 6pm PST.
-
  * The purpose of this code is to recreate MS Paint using the JavaScript library P5.js
  * The code located underneath this comment block is a modified version of the draw/setup
  * function that was given to us by Cahil Foley.
@@ -166,11 +164,7 @@ function draw() {
       shapes[i].draw();
     }
     sidebar();
-<<<<<<< HEAD
-    colorPicker(10,280);
-=======
     colorPicker(10,410);
->>>>>>> cb1dd151cc1606abbd4029f57c9dac7b9c6f48c3
   //rain.forEach(s => s.draw())
 }
 
@@ -350,4 +344,3 @@ class Circle{
 function windowResized() {
   resizeCanvas(window.innerWidth - 55, window.innerHeight - 195)
 }
-
