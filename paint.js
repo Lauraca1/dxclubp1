@@ -161,7 +161,7 @@ function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
     background(255);
     sidebar();
-    //colorPicker(10,380);
+    //colorPicker(10,20);
     for(var i = 0; i < shapes.length; i++){
       shapes[i].draw();
     }
@@ -227,7 +227,8 @@ function colorPicker(x,y){
     fill(200);
     rect(x, y+40, 100, 30);
     fill(255, 0, 0);
-    circle(cx, y+55, 20)
+    //circle(cx, y+55, 20)
+    ellipse(cx, y+55, 20);
     if(mouseX >= x && mouseX <= x+100 && mouseY >= y+40 && mouseY <= y+70){
       if(mouseIsPressed){
         cx = mouseX;
