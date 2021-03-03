@@ -131,14 +131,21 @@ var canvas;
 var shapes = [];
 //var input;
 
-var bps = [25, 125, 225, 325]
+// Variables for buttons
+var bps = [25, 125, 225, 325];
+var bWidth = 60;
+var bHeight = 60;
+var padding = 10;
 
 function setup() {
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
-  buttons.push(new Hitbox(25, bps[0], 60, 60, 'square'));
-  buttons.push(new Hitbox(25, bps[1], 60, 60, 'circle'));
-  buttons.push(new Hitbox(25, bps[2], 60, 60, 'pencil'));
-  buttons.push(new Hitbox(25, bps[3], 60, 60, 'special'));
+  bWidth = 60
+  bHeight = 30000 / window.innerHeight;
+  console.log("Button size: " + bWidth);
+  buttons.push(new Hitbox(25, bps[0], bWidth, bHeight, 'square'));
+  buttons.push(new Hitbox(25, bps[1], bWidth, bHeight, 'circle'));
+  buttons.push(new Hitbox(25, bps[2], bWidth, bHeight, 'pencil'));
+  buttons.push(new Hitbox(25, bps[3], bWidth, bHeight, 'special'));
 
   for(var i = 0; i < buttons.length; i++){
     buttons[i].active = true; // set all hitboxes active
@@ -178,6 +185,14 @@ function draw() {
   //rain.forEach(s => s.draw())
 }
 
+function resH(num){
+  return num / window.innerHeight;
+}
+
+function resW(num){
+  return num / window.innerWidth;
+}
+
 /*This function will be what represents the pallete
  * in which the user will be able to change the color
  * they're using, the paint brush, etc....
@@ -193,7 +208,7 @@ function draw() {
   // Square
   stroke(100);
   fill(50);
-  rect(25, bps[0], 60, 60);
+  rect(25, bps[0], bWidth, bHeight);
   noStroke();
   fill(r, g, b);
   rect(42.5, bps[0] + 17.5, 25, 25);
@@ -201,7 +216,7 @@ function draw() {
   // Circle
   stroke(100);
   fill(50);
-  rect(25, bps[1], 60, 60);
+  rect(25, bps[1], bWidth, bHeight);
   noStroke();
   fill(r, g, b);
   ellipse(55, bps[1] + 30, 30);
@@ -209,12 +224,12 @@ function draw() {
   // Pencil
   stroke(100);
   fill(50);
-  rect(25, bps[2], 60, 60);
+  rect(25, bps[2], bWidth, bHeight);
   
   // special brush
   stroke(100);
   fill(50);
-  rect(25, bps[3], 60, 60);
+  rect(25, bps[3], bWidth, bHeight);
 }
 
 function colorPicker(x,y){
