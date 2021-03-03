@@ -126,14 +126,14 @@ var tx =10;
 var sx =10;
 let slider;
 var currentBrush = 'square';
-var currentStroke = 100;
+var currentStroke;
 var buttons = []; // Used for buttons and other interactions
 var canvas;
 var shapes = [];
 var input;
 
 // Variables for buttons
-var bps = [25, 125, 225, 325];
+var bps = [20, 100, 180, 260];
 var bWidth = 60;
 var bHeight = 60;
 var padding = 10;
@@ -184,11 +184,9 @@ function setup() {
   //EasterEgg setup pt.2
   for (let i = 0; i < total; i++) {
     rain.push(new Stream(i, random(1, height), random(2, 10)))
-    }
-
-    slidyboi(16,375, 1,100);
-
   }
+  slidyboi(16, 640, 1,100);
+}
 
 //Function that will start the easter Egg
 function redPill(){
@@ -205,27 +203,27 @@ function redPill(){
 }
 
 function draw() {
-    //resizeCanvas(window.innerWidth, window.innerHeight)
-    background(255);
-    for(var i = 0; i < shapes.length; i++){
-      shapes[i].draw();
-    }
-    sidebar();
-    colorPicker(10,410);
-    currentStroke = slider.value();
+  //resizeCanvas(window.innerWidth, window.innerHeight)
+  background(255);
+  for(var i = 0; i < shapes.length; i++){
+    shapes[i].draw();
+  }
+
+  sidebar();
+  colorPicker(10,380);
+  currentStroke = slider.value();
+
+  if(mouseIsPressed && currentBrush == 'pencil' && canvas.check(mouseX, mouseY)){
+    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [r, g, b], (currentStroke / 5)));
+  }
+  
+  for(var i = 0; i < marks.length; i++){
+    marks[i].drawPencil();
+  }
 
   //If the easter egg is triggered, then it's time to break out!
   if(easterEggBool == true){
     rain.forEach(s => s.draw())
-  }
-
-  if(mouseIsPressed && currentBrush == "pencil"){
-    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY));
-  }
-
-  for(var i = 0; i < marks.length; i++){
-    strokeWeight(2);
-    line(marks[i].x, marks[i].y, marks[i].px, marks[i].py);
   }
 }
 
@@ -233,9 +231,9 @@ function draw() {
  * in which the user will be able to change the color
  * they're using, the paint brush, etc....
  */
- function sidebar(){
-    // Sidebar
-    noStroke();
+function sidebar(){
+  // Sidebar
+  noStroke();
   fill(25); // change 25
   rect(0, 0, 120, window.innerHeight);
 
@@ -321,25 +319,25 @@ function colorPicker(x,y){
     }
   }
 
-  function slidyboi(x,y,minVal,maxVal){
+function slidyboi(x,y,minVal,maxVal){
   slider = createSlider(minVal, maxVal, maxVal/2, 0);
   slider.position(x, y);
   slider.style('width', '80px');
-  }
+}
 
-  function sizePicker(x, y){
-    fill(0);
-    rect(x, y, 100, 150);
-    textSize(18);
-    fill(255);
-    textAlign(CENTER);
-    textStyle(BOLD);
-    textFont("Comic Sans MS");
-    text("Stroke Size", x, y);
+function sizePicker(x, y){
+  fill(0);
+  rect(x, y, 100, 150);
+  textSize(18);
+  fill(255);
+  textAlign(CENTER);
+  textStyle(BOLD);
+  textFont("Comic Sans MS");
+  text("Stroke Size", x, y);
 
-  }
+}
 
-  function mousePressed(){
+function mousePressed(){
 
   // Check if a brush button was pressed
   for(var i = 0; i < buttons.length; i++){
@@ -421,11 +419,22 @@ class Circle{
 }
 
 class Pencil{
-  constructor(x, y, px, py){
+  constructor(x, y, px, py, color, size){
     this.x = x;
     this.y = y;
     this.px = px;
     this.py = py;
+    this.r = color[0];
+    this.g = color[1];
+    this.b = color[2];
+    this.size = size;
+  }
+
+  drawPencil(){
+    strokeWeight(this.size);
+    stroke(this.r, this.g, this.b);
+    line(this.x, this.y, this.px, this.py);
+    strokeWeight(1);
   }
 }
 
