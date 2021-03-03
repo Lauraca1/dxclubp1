@@ -132,12 +132,14 @@ var buttons = []; // Used for buttons and other interactions
 var canvas;
 var shapes = [];
 
+var bps = [25, 125, 225, 325]
+
 function setup() {
   createCanvas(window.innerWidth - 55, window.innerHeight - 195)
-  buttons.push(new Hitbox(25, 100, 60, 60, 'square'));
-  buttons.push(new Hitbox(25, 200, 60, 60, 'circle'));
-  buttons.push(new Hitbox(25, 300, 60, 60, 'pencil'));
-  buttons.push(new Hitbox(25, 400, 60, 60, 'special'));
+  buttons.push(new Hitbox(25, bps[0], 60, 60, 'square'));
+  buttons.push(new Hitbox(25, bps[1], 60, 60, 'circle'));
+  buttons.push(new Hitbox(25, bps[2], 60, 60, 'pencil'));
+  buttons.push(new Hitbox(25, bps[3], 60, 60, 'special'));
 
   for(var i = 0; i < buttons.length; i++){
     buttons[i].active = true; // set all hitboxes active
@@ -164,7 +166,7 @@ function draw() {
       shapes[i].draw();
     }
     sidebar();
-    colorPicker(10,20);
+    colorPicker(10,410);
   //rain.forEach(s => s.draw())
 }
 
@@ -183,26 +185,26 @@ function sidebar(){
   // Square
   stroke(100);
   fill(50);
-  rect(25, 100, 60, 60);
-  fill(255);
-  rect(42.5, 117.5, 25, 25);
+  rect(25, bps[0], 60, 60);
+  fill(r, g, b);
+  rect(42.5, bps[0] + 17.5, 25, 25);
 
   // Circle
   stroke(100);
   fill(50);
-  rect(25, 200, 60, 60);
-  fill(255);
-  ellipse(55, 230, 30);
+  rect(25, bps[1], 60, 60);
+  fill(r, g, b);
+  ellipse(55, bps[1] + 30, 30);
 
   // Pencil
   stroke(100);
   fill(50);
-  rect(25, 300, 60, 60)   ;
+  rect(25, bps[2], 60, 60);
   
   // special brush
   stroke(100);
   fill(50);
-  rect(25, 400, 60, 60);
+  rect(25, bps[3], 60, 60);
 }
 
 function colorPicker(x,y){
