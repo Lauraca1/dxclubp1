@@ -160,6 +160,8 @@ function setup() {
   // }
 }
 
+//please
+
 function draw() {
     //resizeCanvas(window.innerWidth, window.innerHeight)
     background(255);
