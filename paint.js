@@ -245,7 +245,7 @@ function sidebar(){
   rect(25, bps[0], bWidth, bHeight);
   noStroke();
   fill(r, g, b);
-  rect(42.5, bps[0] + 17.5, 25, 25);
+  rect(42.5, bps[0] + 10.5, 25, 25);
 
   // Circle
   stroke(100);
@@ -253,7 +253,7 @@ function sidebar(){
   rect(25, bps[1], bWidth, bHeight);
   noStroke();
   fill(r, g, b);
-  ellipse(55, bps[1] + 30, 30);
+  ellipse(55, bps[1] + 21, 30);
 
   // Pencil
   stroke(100);
