@@ -138,10 +138,6 @@ var bWidth = 60;
 var bHeight = 60;
 var padding = 10;
 
-// Variables for pencil brush
-var marks = [];
-var erasers = [];
-
 var easterEggString;
 var easterEggInput;
 var easterEggBool;
@@ -217,15 +213,11 @@ function draw() {
   currentStroke = slider.value();
 
   if(mouseIsPressed && currentBrush == 'eraser' && canvas.check(mouseX, mouseY)){
-    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [255, 255, 255], (currentStroke / 2)));
+    shapes.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [255, 255, 255], (currentStroke / 2)));
   }
 
   if(mouseIsPressed && currentBrush == 'pencil' && canvas.check(mouseX, mouseY)){
-    marks.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [r, g, b], (currentStroke / 2)));
-  }
-  
-  for(var i = 0; i < marks.length; i++){
-    marks[i].drawPencil();
+    shapes.push(new Pencil(mouseX, mouseY, pmouseX, pmouseY, [r, g, b], (currentStroke / 2)));
   }
 
   for(var i = 0; i < shapes.length; i++){
