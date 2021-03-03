@@ -213,9 +213,6 @@ function redPill(){
 function draw() {
   //resizeCanvas(window.innerWidth, window.innerHeight)
   background(255);
-  for(var i = 0; i < shapes.length; i++){
-    shapes[i].draw();
-  }
 
   currentStroke = slider.value();
 
@@ -229,6 +226,10 @@ function draw() {
   
   for(var i = 0; i < marks.length; i++){
     marks[i].drawPencil();
+  }
+
+  for(var i = 0; i < shapes.length; i++){
+    shapes[i].draw();
   }
 
   sidebar();
@@ -453,7 +454,7 @@ class Pencil{
     this.size = size;
   }
 
-  drawPencil(){
+  draw(){
     strokeWeight(this.size);
     stroke(this.r, this.g, this.b);
     line(this.x, this.y, this.px, this.py);
