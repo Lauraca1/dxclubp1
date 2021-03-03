@@ -1,11 +1,10 @@
-
 /*The following code was grabbed from codepen.io and was written by
  *Cahil Foley in response to a video about Matrix Rain Video uploaded
  *to Youtube by "The Coding Train" channel
  *LINK TO THE VIDEO: https://www.youtube.com/watch?v=S1TQCi9axzg
  */
 
-class Letter {
+ class Letter {
   constructor(x, y, d) {
     this.char = Letter.getChar()
     this.x = x
@@ -101,7 +100,6 @@ let rain = []
 /* The following code was written by Laura C., Diego G. and Salvador G.
  * for the final meeting of our club, the Digital Transformation Club(Dx Club)
  * which takes/took place on March 3rd 2021 at 6pm PST.
-
  * The purpose of this code is to recreate MS Paint using the JavaScript library P5.js
  * The code located underneath this comment block is a modified version of the draw/setup
  * function that was given to us by Cahil Foley.
@@ -131,6 +129,7 @@ var currentStroke = 100;
 var buttons = []; // Used for buttons and other interactions
 var canvas;
 var shapes = [];
+var input;
 
 var bps = [25, 125, 225, 325]
 
@@ -148,6 +147,8 @@ function setup() {
 
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
+  createP('');
+  input = createInput('');
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
@@ -167,6 +168,9 @@ function draw() {
     }
     sidebar();
     colorPicker(10,410);
+
+    fill(0);
+    text(input.value(), 500, 500);
   //rain.forEach(s => s.draw())
 }
 
@@ -174,9 +178,9 @@ function draw() {
  * in which the user will be able to change the color
  * they're using, the paint brush, etc....
  */
-function sidebar(){
+ function sidebar(){
     // Sidebar
-  noStroke();
+    noStroke();
   fill(25); // change 25
   rect(0, 0, 120, window.innerHeight);
 
@@ -260,7 +264,7 @@ function colorPicker(x,y){
         b = (255/100) * (sx-10);
       }
     }
-}
+  }
 
 function sizePicker(x, y){
   fill(0);
@@ -274,7 +278,7 @@ function sizePicker(x, y){
 
 }
 
-function mousePressed(){
+  function mousePressed(){
 
   // Check if a brush button was pressed
   for(var i = 0; i < buttons.length; i++){
@@ -315,9 +319,9 @@ class Hitbox{
 
   check(mX, mY){ //This will return true or false if mouse was clicked on top of the hitbox
     if(mX >= this.x && mX <= this.x + this.w && mY >= this.y && mY <= this.y + this.h && this.active)
-        return true;
+      return true;
     else
-        return false;
+      return false;
   }
 }
 
@@ -358,4 +362,3 @@ class Circle{
 function windowResized() {
   resizeCanvas(window.innerWidth - 55, window.innerHeight - 195)
 }
-
