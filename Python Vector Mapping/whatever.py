@@ -1,7 +1,6 @@
 import pyautogui as p
 import time
 p.FAILSAFE = True
-file = open("/Users/diegogaray/PycharmProjects/mapping/mapping.txt", 'w+')
 
 originX = 200
 originY = 400
