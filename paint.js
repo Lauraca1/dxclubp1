@@ -174,11 +174,6 @@ function setup() {
   
   canvas = new Hitbox(120, 0, window.innerWidth - 175, window.innerHeight - 195);
 
-  //EasterEgg setup
-  easterEggString = createP("What is the code?")
-  easterEggInput = createInput('');
-  easterEggInput.changed(redPill);
-  
   //canvas.position(50, 100);
   //canvas.position(10, 10, 'fixed')
   //noStroke()
