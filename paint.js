@@ -150,9 +150,9 @@ function setup() {
   //EasterEgg setup
   //easterEggString = createP("What is the code?")
   easterEggString = createDiv("What is the code?")
-  easterEggString.position(220,180);
+  easterEggString.position(120,192);
   easterEggInput = createInput('');
-  easterEggInput.position(220, 200);
+  easterEggInput.position(120, 212);
   easterEggInput.changed(redPill);
  // createP('');
   
@@ -277,6 +277,16 @@ function sidebar(){
   stroke(100);
   fill(50);
   rect(25, bps[3], bWidth, bHeight);
+}
+
+function pIcon(x,y){
+    fill(255)
+    triangle(x+1, y+95, x-13, y+105, x+1, y+115);
+    fill(255, 255, 0);
+    rect(x+1, y+95, 35, 19.5)
+    fill(255)
+    rect(x+36,y+95, 12,19.5)
+  
 }
 
 function colorPicker(x,y){
